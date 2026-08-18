@@ -1,0 +1,50 @@
+{
+  "profile": {
+    "name": "Jose Nicolas Muñoz Cortes",
+    "role": "Estudiante de Ingeniería de Software",
+    "description": "Soy estudiante de Ingeniería de Software en la Escuela Superior Politécnica de Chimborazo, apasionado por la tecnología, el diseño y el desarrollo de experiencias digitales. Actualmente me interesa aprender a desplegar y lanzar frontend de aplicaciones web, además de fortalecer mis habilidades en UX/UI y prototipado."
+  },
+  "projects": [
+    {
+      "title": "Portafolio Personal",
+      "description": "Diseño de una web personal para presentar mi perfil, habilidades y proyectos profesionales.",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "link": "#"
+    },
+    {
+      "title": "Prototipado de Interfaces",
+      "description": "Creación de mockups y prototipos centrados en la experiencia del usuario y la navegación intuitiva.",
+      "tags": ["UX", "Figma", "Prototipado"],
+      "link": "#"
+    },
+    {
+      "title": "Landing Page Web",
+      "description": "Desarrollo de una página de presentación con enfoque visual, clara y moderna.",
+      "tags": ["Web", "Diseño", "Responsive"],
+      "link": "#"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Curso de Prototipado",
+      "issuer": "Formación académica / aprendizaje personal",
+      "year": "2026"
+    },
+    {
+      "name": "Diseño UX/UI",
+      "issuer": "Cursando y fortaleciendo habilidades",
+      "year": "En progreso"
+    },
+    {
+      "name": "Despliegue y lanzamiento de frontend",
+      "issuer": "Objetivo de aprendizaje personal",
+      "year": "En proceso"
+    }
+  ],
+  "socials": [
+    { "name": "GitHub", "icon": "G", "url": "https://github.com" },
+    { "name": "LinkedIn", "icon": "in", "url": "https://linkedin.com" },
+    { "name": "Instagram", "icon": "◎", "url": "https://instagram.com" },
+    { "name": "Correo", "icon": "@", "url": "mailto:jose.nicolas@example.com" }
+  ]
+}

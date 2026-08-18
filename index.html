@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio</title>
+    <meta
+      name="description"
+      content="Portafolio personal con proyectos, certificados y redes sociales."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Navegación principal">
+        <div class="brand">Portfolio</div>
+        <div class="nav-links">
+          <a href="#inicio">INICIO</a>
+          <a href="#proyectos">PROYECTOS</a>
+          <a href="#certificados">CERTIFICADOS</a>
+          <a href="#redes">REDES SOCIALES</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero container">
+        <div class="hero-grid">
+          <div class="profile-box card">
+            <div class="profile-image-wrap">
+              <img src="assets/profile.jpg" alt="Foto de perfil" />
+            </div>
+            <div class="profile-meta">
+              <p class="eyebrow">Bienvenido/a</p>
+              <h1 id="profile-name">Cargando nombre...</h1>
+              <p id="profile-role" class="role">Cargando profesión...</p>
+            </div>
+          </div>
+
+          <div class="description-box card">
+            <p class="section-label">Sobre mí</p>
+            <h2>Desarrollo soluciones digitales con enfoque en experiencia y calidad.</h2>
+            <p id="profile-description">
+              Cargando descripción...
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="container section-block">
+        <div class="section-heading">
+          <p class="section-label">Proyectos</p>
+          <h3>Lo que he construido</h3>
+        </div>
+        <div id="projects-grid" class="cards-grid"></div>
+      </section>
+
+      <section id="certificados" class="container section-block">
+        <div class="section-heading">
+          <p class="section-label">Certificados</p>
+          <h3>Formación y especialización</h3>
+        </div>
+        <div id="certificates-grid" class="cards-grid certificates-grid"></div>
+      </section>
+
+      <section id="redes" class="container section-block last-section">
+        <div class="section-heading center">
+          <p class="section-label">Redes sociales</p>
+          <h3>Conéctate conmigo</h3>
+        </div>
+        <div id="socials-grid" class="socials-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Mi Portafolio</p>
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
