@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clon T | Mi saldo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="user-summary">
+          <span class="avatar" aria-hidden="true">N</span>
+          <div>
+            <p class="user-name" id="user-name">Nicolás</p>
+            <p class="phone-number" id="phone-number">099 999 9999</p>
+          </div>
+        </div>
+        <div class="header-actions" aria-label="Acciones de cuenta">
+          <button class="icon-button" type="button" aria-label="Notificaciones" title="Notificaciones">
+            <span aria-hidden="true">&#128276;</span>
+          </button>
+          <button class="icon-button" type="button" aria-label="Menú" title="Menú">
+            <span aria-hidden="true">&#9776;</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="banner-section" aria-label="Promociones">
+        <div class="banner-track" id="banner-track"></div>
+        <div class="banner-dots" id="banner-dots" aria-hidden="true"></div>
+      </section>
+
+      <section class="balance-card" aria-labelledby="balance-title">
+        <div class="balance-header">
+          <div>
+            <p class="overline">Tu cuenta</p>
+            <h1 id="balance-title">SALDO</h1>
+            <p class="balance-value" id="balance-value">$0,00</p>
+          </div>
+          <button class="buy-button" id="buy-button" type="button">Compra más</button>
+        </div>
+
+        <div class="plan-summary">
+          <div>
+            <p class="expiry-label">Vence <strong id="expiry-date">30/08/2026</strong></p>
+            <p class="combo-label" id="combo-name">Incluye un combo</p>
+          </div>
+          <span class="status-pill">Activo</span>
+        </div>
+
+        <div class="usage-grid" id="usage-grid"></div>
+      </section>
+
+      <p class="support-note">Administra tus beneficios desde un solo lugar.</p>
+    </main>
+    <script src="script.js" defer></script>
+  </body>
+</html>

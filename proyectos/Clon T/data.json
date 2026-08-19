@@ -1,0 +1,28 @@
+{
+  "user": {
+    "name": "Nicolás",
+    "phone": "099 999 9999"
+  },
+  "banners": [
+    {
+      "kicker": "Oferta especial",
+      "title": "Duplica tus megas por 30 días"
+    },
+    {
+      "kicker": "Tu combo ideal",
+      "title": "Más datos para disfrutar sin límites"
+    },
+    {
+      "kicker": "Beneficio exclusivo",
+      "title": "Activa tu plan en pocos pasos"
+    }
+  ],
+  "balance": "$12,50",
+  "expiry": "30/08/2026",
+  "combo": "Incluye un combo",
+  "usage": [
+    { "name": "DATOS", "value": "4.2 GB", "used": 68, "color": "#0868d7" },
+    { "name": "VOZ", "value": "120 min", "used": 42, "color": "#ef5d96" },
+    { "name": "SMS", "value": "80 SMS", "used": 25, "color": "#2fbd8b" }
+  ]
+}

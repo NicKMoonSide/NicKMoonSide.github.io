@@ -22,6 +22,12 @@
       "description": "Desarrollo de una página de presentación con enfoque visual, clara y moderna.",
       "tags": ["Web", "Diseño", "Responsive"],
       "link": "#"
+    },
+    {
+      "title": "Clon T - App móvil",
+      "description": "Prototipo móvil de una aplicación de telefonía con saldo, promociones y consumo de datos, voz y SMS.",
+      "tags": ["HTML", "CSS", "JavaScript", "Mobile UI"],
+      "link": "proyectos/Clon%20T/index.html"
     }
   ],
   "certificates": [
