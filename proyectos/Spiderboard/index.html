@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Spiderboard, organizador personal de tareas con Kanban y Scrum." />
+    <title>Spiderboard | Organizador personal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="comic-noise" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="back-link" href="../../index.html" aria-label="Volver al portafolio">&larr; PORTAFOLIO</a>
+      <div class="brand-mark"><span>SPIDER</span><strong>BOARD</strong></div>
+      <div class="topbar-meta"><span class="live-dot"></span><span id="save-status">MEMORIA LOCAL ACTIVA</span></div>
+    </header>
+
+    <main class="app-shell">
+      <section class="intro-panel">
+        <div>
+          <p class="kicker">MISIÓN ACTUAL // SPRINT PERSONAL</p>
+          <h1>ORGANIZA.<br /><em>HAZLO.</em><br />AVANZA.</h1>
+          <p class="intro-copy">Tu centro de mando para transformar ideas sueltas en progreso visible.</p>
+        </div>
+        <div class="hero-badge" aria-hidden="true"><span>GO</span><small>MAKE<br />IT<br />REAL</small></div>
+      </section>
+
+      <section class="toolbar" aria-label="Controles del tablero">
+        <div class="board-stats"><span id="task-count">0 TAREAS</span><span class="slash">/</span><span id="done-count">0 COMPLETADAS</span></div>
+        <div class="toolbar-actions">
+          <button class="filter-button" id="filter-button" type="button" aria-expanded="false">FILTRAR <span aria-hidden="true">&#9662;</span></button>
+          <button class="primary-button" id="add-task" type="button"><span aria-hidden="true">+</span> NUEVA TAREA</button>
+        </div>
+        <div class="filter-menu" id="filter-menu" hidden>
+          <button type="button" data-filter="all">Todas las tareas</button>
+          <button type="button" data-filter="high">Solo prioridad alta</button>
+          <button type="button" data-filter="academic">Académicos</button>
+          <button type="button" data-filter="technical">Técnicas</button>
+        </div>
+      </section>
+
+      <section class="board" id="board" aria-label="Tablero de tareas"></section>
+      <p class="board-hint">ARRASTRA PARA MOVER &nbsp;·&nbsp; CLIC DERECHO PARA EL MENÚ DE ACCIONES</p>
+    </main>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <form class="task-modal" id="task-form">
+        <button class="close-button" id="close-modal" type="button" aria-label="Cerrar">&times;</button>
+        <p class="kicker">NUEVO MOVIMIENTO</p>
+        <h2 id="modal-title">AÑADIR TAREA</h2>
+        <label>Título <input id="task-title" name="title" required maxlength="90" /></label>
+        <label>Descripción <textarea id="task-description" name="description" maxlength="180"></textarea></label>
+        <div class="form-row">
+          <label>Columna <select id="task-column" name="column"></select></label>
+          <label>Prioridad <select id="task-priority" name="priority"><option value="low">Baja</option><option value="medium" selected>Media</option><option value="high">Alta</option></select></label>
+        </div>
+        <label>Área <select id="task-area" name="area"><option value="academic">Académicos</option><option value="technical">Técnicas</option><option value="learning">Aprendizaje</option><option value="career">Carrera</option></select></label>
+        <button class="primary-button modal-submit" type="submit">GUARDAR TAREA <span aria-hidden="true">&rarr;</span></button>
+      </form>
+    </div>
+    <div class="context-menu" id="context-menu" hidden>
+      <button type="button" data-action="edit">Editar tarea</button>
+      <button type="button" data-action="move">Mover a...</button>
+      <button type="button" data-action="delete" class="danger">Eliminar tarea</button>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js" defer></script>
+  </body>
+</html>

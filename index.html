@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -19,7 +19,7 @@
   <body>
     <header class="site-header">
       <nav class="navbar container" aria-label="Navegación principal">
-        <div class="brand">Portfolio</div>
+        <div class="brand">Portafolio</div>
         <div class="nav-links">
           <a href="#inicio">INICIO</a>
           <a href="#proyectos">PROYECTOS</a>
@@ -53,12 +53,11 @@
         </div>
       </section>
 
-      <section id="proyectos" class="container section-block">
-        <div class="section-heading">
+      <section id="proyectos" class="projects-section">
+        <div class="project-heading">
           <p class="section-label">Proyectos</p>
-          <h3>Lo que he construido</h3>
         </div>
-        <div id="projects-grid" class="cards-grid"></div>
+        <div id="projects-grid" class="project-gallery" aria-label="Galería 3D de proyectos"></div>
       </section>
 
       <section id="certificados" class="container section-block">
@@ -69,18 +68,28 @@
         <div id="certificates-grid" class="cards-grid certificates-grid"></div>
       </section>
 
-      <section id="redes" class="container section-block last-section">
-        <div class="section-heading center">
-          <p class="section-label">Redes sociales</p>
-          <h3>Conéctate conmigo</h3>
+      <section id="redes" class="final-section">
+        <div class="final-section-inner container">
+          <p class="section-label">Cierre</p>
+          <h3>Eso es todo</h3>
+          <p class="final-message">Gracias por llegar hasta el final.</p>
+          <p class="section-label final-social-label">Redes sociales</p>
+          <div id="socials-grid" class="socials-grid"></div>
+          <div class="contact-actions" aria-label="Datos de contacto">
+            <button class="copy-button" type="button" data-copy-value="nicolas04mc@gmail.com">
+              Correo: nicolas04mc@gmail.com
+            </button>
+            <button class="copy-button" type="button" data-copy-value="099 577 2949">
+              Telefono: 099 577 2949
+            </button>
+          </div>
         </div>
-        <div id="socials-grid" class="socials-grid"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Mi Portafolio</p>
+        <p>© <span id="year"></span> Incontable</p>
       </div>
     </footer>
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clon de YouTube con videos, Shorts y canales favoritos.">
+  <title>YouTube | Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="media.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú"><span class="icon">☰</span></button>
+    <a class="youtube-brand" href="#inicio" aria-label="YouTube inicio"><span class="youtube-mark">▶</span><strong>YouTube</strong></a>
+    <form class="search-form" id="search-form" role="search">
+      <label class="sr-only" for="search-input">Buscar</label>
+      <input id="search-input" type="search" placeholder="Buscar" autocomplete="off">
+      <button class="search-button" type="submit" aria-label="Buscar">⌕</button>
+    </form>
+    <button class="icon-button voice-button" type="button" aria-label="Buscar por voz" title="Búsqueda por voz">●</button>
+    <div class="top-actions">
+      <button class="icon-button" type="button" aria-label="Crear" title="Crear">＋</button>
+      <button class="icon-button" type="button" aria-label="Notificaciones" title="Notificaciones">♧</button>
+      <button class="profile-avatar" type="button" aria-label="Abrir perfil">N</button>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+    <nav class="side-nav">
+      <a class="nav-item active" href="#inicio"><span class="nav-icon">⌂</span><span>Inicio</span></a>
+      <a class="nav-item" href="#shorts"><span class="nav-icon shorts-symbol">▶</span><span>Shorts</span></a>
+      <a class="nav-item" href="#suscripciones"><span class="nav-icon">▣</span><span>Suscripciones</span></a>
+      <div class="nav-divider"></div>
+      <a class="nav-item" href="#biblioteca"><span class="nav-icon">▤</span><span>Biblioteca</span></a>
+      <a class="nav-item" href="#historial"><span class="nav-icon">◷</span><span>Historial</span></a>
+      <a class="nav-item" href="#playlist"><span class="nav-icon">▱</span><span>Listas de reproducción</span></a>
+      <div class="nav-divider"></div>
+      <p class="sidebar-title">Suscripciones</p>
+      <div id="channel-nav"></div>
+      <div class="nav-divider"></div>
+      <a class="nav-item" href="#explorar"><span class="nav-icon">✦</span><span>Explorar</span></a>
+    </nav>
+    <p class="sidebar-footer">Acerca de · Prensa · Derechos<br>© 2026 YouTube Clone</p>
+  </aside>
+
+  <main class="page-content" id="inicio">
+    <div class="category-bar" aria-label="Categorías">
+      <button class="category active" type="button" data-category="Todos">Todos</button>
+      <button class="category" type="button" data-category="Ciencia">Ciencia</button>
+      <button class="category" type="button" data-category="Noticias">Noticias</button>
+      <button class="category" type="button" data-category="Películas">Películas</button>
+      <button class="category" type="button" data-category="Historia">Historia</button>
+      <button class="category" type="button" data-category="Tecnología">Tecnología</button>
+      <button class="category" type="button" data-category="En directo">En directo</button>
+    </div>
+
+    <section class="shorts-section" id="shorts" aria-labelledby="shorts-title">
+      <div class="section-heading"><div class="shorts-heading"><img src="canal/img/short.png" alt="" id="shorts-icon"><h1 id="shorts-title">Shorts</h1></div><button class="section-arrow" type="button" aria-label="Ver más Shorts">→</button></div>
+      <div class="shorts-grid" id="shorts-grid"></div>
+    </section>
+
+    <section class="videos-section" aria-labelledby="videos-title">
+      <div class="section-heading"><h2 id="videos-title">Recomendados para ti</h2><button class="view-toggle" type="button" aria-label="Cambiar vista">▦</button></div>
+      <div class="video-grid" id="video-grid"></div>
+      <p class="empty-search" id="empty-search" hidden>No encontramos videos con esa búsqueda.</p>
+    </section>
+  </main>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "channels": [
+    {"name":"DW Español","handle":"@dwespanol","folder":"dw","subscribers":"1,2 M"},
+    {"name":"Veritasium","handle":"@veritasium","folder":"veritasium","subscribers":"16,4 M"},
+    {"name":"Charles","handle":"@charles","folder":"charles","subscribers":"2,1 M"},
+    {"name":"Moviegasm","handle":"@moviegasm","folder":"moviegasm","subscribers":"890 mil"},
+    {"name":"BN Periodismo","handle":"@bnperiodismo","folder":"bn periodismo","subscribers":"429 mil"},
+    {"name":"EnchufeTV","handle":"@enchufetv","folder":"enchufe tv","subscribers":"28,6 M"},
+    {"name":"Comentando Películas","handle":"@comentandopeliculas","folder":"comentando peliculas","subscribers":"612 mil"},
+    {"name":"Historia Geopolítica","handle":"@historiageopolitica","folder":"historia geopolitica","subscribers":"205 mil"}
+  ],
+  "shorts": [
+    {"title":"La historia que cambió el mundo en 60 segundos", "channel":"DW Español", "folder":"dw", "video":"short-1.mp4"},
+    {"title":"¿Por qué no podemos ver el lado oscuro?", "channel":"Charles", "folder":"charles", "video":"short-1.mp4"},
+    {"title":"El detalle que todos pasaron por alto", "channel":"DW Español", "folder":"dw", "video":"short-1.mp4"},
+    {"title":"Una escena que merece otra mirada", "channel":"Charles", "folder":"charles", "video":"short-1.mp4"}
+  ],
+  "videos": [
+    {"title":"El mundo en 15 minutos: las noticias que necesitas conocer hoy", "channel":"DW Español", "folder":"dw", "thumbnail":"portada-1.png", "video":"portada-2-video.mp4", "views":"1,2 M de vistas", "age":"hace 3 horas", "duration":"15:04", "category":"Noticias"},
+    {"title":"La ciencia de los colores que nunca aprendimos en clase", "channel":"Veritasium", "folder":"veritasium", "thumbnail":"portada-1.png", "views":"8,7 M de vistas", "age":"hace 2 días", "duration":"12:42", "category":"Ciencia"},
+    {"title":"El lenguaje secreto de las películas de terror", "channel":"Moviegasm", "folder":"moviegasm", "thumbnail":"portada-1.png", "video":"portada-1-video.mp4", "views":"3,4 M de vistas", "age":"hace 5 días", "duration":"18:26", "category":"Películas"},
+    {"title":"La ciudad que desapareció de los mapas", "channel":"Historia Geopolítica", "folder":"historia geopolitica", "thumbnail":"portada-1.png", "views":"924 mil vistas", "age":"hace 1 semana", "duration":"21:10", "category":"Historia"},
+    {"title":"Noticias de última hora que debes escuchar", "channel":"BN Periodismo", "folder":"bn periodismo", "thumbnail":"portada-1.png", "views":"126 mil vistas", "age":"hace 8 horas", "duration":"09:18", "category":"Noticias"},
+    {"title":"Cuando intentas explicar algo demasiado complicado", "channel":"EnchufeTV", "folder":"enchufe tv", "thumbnail":"portada-1.png", "views":"5,1 M de vistas", "age":"hace 4 días", "duration":"07:35", "category":"Entretenimiento"},
+    {"title":"La verdad detrás de este clásico moderno", "channel":"Comentando Películas", "folder":"comentando peliculas", "thumbnail":"portada-1.png", "views":"403 mil vistas", "age":"hace 6 días", "duration":"14:51", "category":"Películas"},
+    {"title":"Cómo piensa una mente verdaderamente creativa", "channel":"Charles", "folder":"charles", "thumbnail":"portada-1.png", "video":"short-1.mp4", "views":"785 mil vistas", "age":"hace 1 semana", "duration":"10:03", "category":"Tecnología"}
+  ]
+}

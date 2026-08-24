@@ -1,0 +1,59 @@
+@media (max-width: 1024px) {
+  .topbar { grid-template-columns: 185px minmax(220px, 1fr) 1fr; gap: 20px; padding: 0 22px; }
+  .sidebar { width: 210px; }
+  .page-content { margin-left: 210px; padding-right: 24px; padding-left: 24px; }
+  .video-grid { grid-template-columns: repeat(3, minmax(190px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .topbar { grid-template-columns: 40px 1fr auto; gap: 12px; height: 66px; padding: 0 16px; }
+  .menu-toggle { display: grid !important; }
+  .youtube-brand { font-size: 1rem; }
+  .search-form { grid-column: 2; grid-row: 1; height: 38px; }
+  .voice-button { display: none; }
+  .top-actions { gap: 5px; }
+  .top-actions .icon-button { display: none; }
+  .sidebar { top: 66px; width: 230px; transform: translateX(-100%); transition: transform .25s ease; box-shadow: 8px 0 22px rgba(0,0,0,.08); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay { position: fixed; inset: 66px 0 0; z-index: 14; background: rgba(0,0,0,.35); }
+  .sidebar-overlay.visible { display: block; }
+  .page-content { margin-left: 0; padding: 20px 18px 45px; }
+  .category-bar { margin-bottom: 24px; }
+  .shorts-grid { grid-template-columns: repeat(4, minmax(130px, 1fr)); gap: 12px; overflow-x: auto; }
+  .short-card { min-width: 130px; }
+  .video-grid { grid-template-columns: repeat(2, minmax(170px, 1fr)); gap: 26px 14px; }
+}
+
+@media (max-width: 425px) {
+  .topbar { grid-template-columns: 30px 1fr 34px; gap: 8px; padding: 0 10px; }
+  .youtube-brand { display: none; }
+  .search-form { grid-column: 2; }
+  .top-actions { grid-column: 3; }
+  .profile-avatar { width: 30px; height: 30px; }
+  .page-content { padding-right: 12px; padding-left: 12px; }
+  .shorts-section { padding-bottom: 24px; }
+  .shorts-grid { margin-right: -12px; padding-right: 12px; }
+  .video-grid { grid-template-columns: 1fr; gap: 28px; }
+  .video-card .media-frame { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 375px) {
+  .topbar { height: 60px; }
+  .sidebar { top: 60px; }
+  .sidebar-overlay { inset: 60px 0 0; }
+  .page-content { padding-top: 15px; }
+  .category { padding: 8px 12px; font-size: .7rem; }
+  .shorts-grid { grid-template-columns: repeat(4, 120px); }
+  .short-card { min-width: 120px; }
+  h1 { font-size: 1.2rem; }
+}
+
+@media (max-width: 320px) {
+  .topbar { padding-right: 7px; padding-left: 7px; }
+  .page-content { padding-right: 9px; padding-left: 9px; }
+  .search-form input { padding-right: 10px; padding-left: 12px; font-size: .8rem; }
+  .search-button { width: 45px; }
+  .shorts-grid { margin-right: -9px; padding-right: 9px; }
+  .video-info { gap: 8px; }
+  .video-info h3 { font-size: .76rem; }
+}
