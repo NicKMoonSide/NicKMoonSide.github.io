@@ -10,21 +10,28 @@
       "description": "Tablero híbrido Kanban + Scrum para convertir pendientes, aprendizaje y proyectos en acción.",
       "tags": ["Kanban", "Scrum", "LocalStorage", "Responsive"],
       "link": "proyectos/Spiderboard/index.html",
-      "image": "mi-galeria-3d/public/images/monolith.svg"
+      "image": "IMG/spiderboard.svg"
     },
     {
       "title": "Clon Tuenti ;)",
       "description": "Prototipo móvil de una aplicación de telefonía con saldo, promociones y consumo de datos, voz y SMS.",
       "tags": ["HTML", "CSS", "JavaScript", "Mobile UI"],
       "link": "proyectos/Clon%20T/index.html",
-      "image": "mi-galeria-3d/public/images/orbit.svg"
+      "image": "IMG/clon-t.svg"
     },
     {
       "title": "Clon de YouTube",
       "description": "Interfaz responsive inspirada en YouTube con videos, Shorts, filtros, búsqueda y previews multimedia.",
       "tags": ["HTML", "CSS", "JavaScript", "Responsive", "Multimedia"],
       "link": "proyectos/Clon-youtube/index.html",
-      "image": "mi-galeria-3d/public/images/frequency.svg"
+      "image": "IMG/clon-youtube.svg"
+    },
+    {
+      "title": "Mi galería 3D",
+      "description": "Experiencia visual interactiva construida con Three.js y escenas tridimensionales.",
+      "tags": ["Three.js", "WebGL", "Interacción"],
+      "link": "proyectos/mi-galeria-3d/index.html",
+      "image": "IMG/galeria-3d.svg"
     }
   ],
   "certificates": [

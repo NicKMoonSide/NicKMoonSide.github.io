@@ -3,32 +3,40 @@ const fallbackData = {
     name: "Jose Nicolas Muñoz Cortez",
     role: "Estudiante de Ingeniería de Software",
     description:
-      "Soy estudiante de Ingeniería de Software en la Escuela Superior Politécnica de Chimborazo, apasionado por la tecnología, el diseño y el desarrollo de experiencias digitales. Me interesa aprender a desplegar y lanzar frontend de aplicaciones web, además de fortalecer mis habilidades en UX/UI y prototipado.",
+      "Soy estudiante de Ingeniería de Software en la Escuela Superior Politécnica de Chimborazo, apasionado por la tecnología, el diseño y el desarrollo de experiencias digitales.",
   },
   projects: [
     {
       title: "Organizador personal",
       description:
         "Tablero híbrido Kanban + Scrum para convertir pendientes, aprendizaje y proyectos en acción.",
-      tags: ["Kanban", "Scrum", "LocalStorage", "Responsive"],
+      tags: ["Kanban", "Scrum", "Responsive"],
       link: "proyectos/Spiderboard/index.html",
-      image: "mi-galeria-3d/public/images/monolith.svg",
+      image: "IMG/spiderboard.svg",
     },
     {
       title: "Clon Tuenti ;)",
       description:
-        "Prototipo móvil de una aplicación de telefonía con saldo, promociones y consumo de datos, voz y SMS.",
-      tags: ["HTML", "CSS", "JavaScript", "Mobile UI"],
+        "Prototipo móvil de una aplicación de telefonía con saldo, promociones y consumo de datos.",
+      tags: ["HTML", "CSS", "JavaScript"],
       link: "proyectos/Clon%20T/index.html",
-      image: "mi-galeria-3d/public/images/orbit.svg",
+      image: "IMG/clon-t.svg",
     },
     {
       title: "Clon de YouTube",
       description:
-        "Interfaz responsive inspirada en YouTube con videos, Shorts, filtros, búsqueda y previews multimedia.",
-      tags: ["HTML", "CSS", "JavaScript", "Responsive", "Multimedia"],
+        "Interfaz responsive inspirada en YouTube con videos, Shorts, filtros y búsqueda.",
+      tags: ["HTML", "CSS", "Responsive"],
       link: "proyectos/Clon-youtube/index.html",
-      image: "mi-galeria-3d/public/images/frequency.svg",
+      image: "IMG/clon-youtube.svg",
+    },
+    {
+      title: "Mi galería 3D",
+      description:
+        "Experiencia visual interactiva construida con Three.js y escenas tridimensionales.",
+      tags: ["Three.js", "WebGL", "Interacción"],
+      link: "proyectos/mi-galeria-3d/index.html",
+      image: "IMG/galeria-3d.svg",
     },
   ],
   certificates: [
@@ -59,9 +67,17 @@ const fallbackData = {
     },
   ],
   socials: [
-    { name: "GitHub", icon: "G", url: "https://github.com" },
-    { name: "LinkedIn", icon: "in", url: "https://linkedin.com" },
-    { name: "Instagram", icon: "◎", url: "https://instagram.com" },
+    { name: "GitHub", icon: "G", url: "https://github.com/NicKMoonSide" },
+    {
+      name: "LinkedIn",
+      icon: "in",
+      url: "https://www.linkedin.com/in/nicolas-mu%C3%B1oz-319714399/",
+    },
+    {
+      name: "Instagram",
+      icon: "◎",
+      url: "https://www.instagram.com/nick._.munoz",
+    },
   ],
 };
 
@@ -72,199 +88,83 @@ const projectsGrid = document.getElementById("projects-grid");
 const certificatesGrid = document.getElementById("certificates-grid");
 const socialsGrid = document.getElementById("socials-grid");
 const yearEl = document.getElementById("year");
-const copyButtons = document.querySelectorAll(".copy-button");
+const themeToggleButton = document.querySelector(".theme-toggle");
+const THEME_STORAGE_KEY = "portfolio-theme-preference";
 
-document.addEventListener("click", (event) => {
-  const interactiveElement = event.target.closest("a, button");
-  if (!interactiveElement) return;
-
-  const ripple = document.createElement("span");
-  ripple.className = "space-ripple";
-  ripple.style.left = `${event.clientX}px`;
-  ripple.style.top = `${event.clientY}px`;
-  document.body.appendChild(ripple);
-  ripple.addEventListener("animationend", () => ripple.remove());
-});
-
-async function copyText(value) {
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(value);
-    return;
+function applyTheme(theme, animate = false) {
+  const normalizedTheme = theme === "light" ? "light" : "dark";
+  document.documentElement.dataset.theme = normalizedTheme;
+  document.body.dataset.theme = normalizedTheme;
+  if (themeToggleButton) {
+    const light = normalizedTheme === "light";
+    themeToggleButton.setAttribute("aria-pressed", String(light));
+    themeToggleButton.setAttribute(
+      "aria-label",
+      light ? "Cambiar al modo oscuro" : "Cambiar al modo claro",
+    );
+    themeToggleButton.innerHTML = `<span class="theme-icon">${light ? "☀️" : "🌙"}</span><span class="theme-label">${light ? "Claro" : "Oscuro"}</span>`;
   }
-
-  const textArea = document.createElement("textarea");
-  textArea.value = value;
-  textArea.setAttribute("readonly", "");
-  textArea.style.position = "fixed";
-  textArea.style.opacity = "0";
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand("copy");
-  textArea.remove();
+  if (animate) {
+    document.body.classList.remove("theme-transitioning");
+    void document.body.offsetWidth;
+    document.body.classList.add("theme-transitioning");
+    window.setTimeout(
+      () => document.body.classList.remove("theme-transitioning"),
+      900,
+    );
+  }
 }
 
-copyButtons.forEach((button) => {
-  button.addEventListener("click", async () => {
-    const originalLabel = button.textContent.trim();
+function initializeTheme() {
+  let storedTheme = "dark";
+  try {
+    storedTheme = localStorage.getItem(THEME_STORAGE_KEY) || storedTheme;
+  } catch (error) {
+    /* ignore unavailable storage */
+  }
+  applyTheme(storedTheme);
+}
 
+if (themeToggleButton) {
+  themeToggleButton.addEventListener("click", () => {
+    const current = document.documentElement.dataset.theme || "dark";
+    const next = current === "dark" ? "light" : "dark";
+    applyTheme(next, true);
     try {
-      await copyText(button.dataset.copyValue);
-      button.textContent = "Copiado";
-      button.classList.add("copy-button-success");
+      localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch (error) {
-      button.textContent = "No se pudo copiar";
+      /* ignore unavailable storage */
     }
-
-    window.setTimeout(() => {
-      button.textContent = originalLabel;
-      button.classList.remove("copy-button-success");
-    }, 1800);
   });
-});
+}
 
 function renderProfile(profile) {
-  if (!profile) return;
-  profileName.textContent = profile.name || fallbackData.profile.name;
-  profileRole.textContent = profile.role || fallbackData.profile.role;
-  profileDescription.textContent =
-    profile.description || fallbackData.profile.description;
+  profileName.textContent = profile.name;
+  profileRole.textContent = profile.role;
+  profileDescription.textContent = profile.description;
 }
 
 function renderProjects(projects) {
   const items = projects && projects.length ? projects : fallbackData.projects;
-  const step = 360 / items.length;
-
-  projectsGrid.innerHTML = `
-    <div class="project-scene">
-      <div class="project-wheel">
-        ${items
-          .map(
-            (project, index) => `
-          <a class="project-orbit-card${index === 0 ? " active" : ""}"
-            href="${project.link || "#"}" target="_blank" rel="noreferrer"
-            style="--angle: ${index * step}deg">
-            <img src="${project.image || "mi-galeria-3d/public/images/pulse.svg"}" alt="Vista previa de ${project.title}">
-            <span class="project-card-info">
-              <strong>${project.title}</strong>
-              <span>${project.description}</span>
-              <small>${(project.tags || []).join(" / ")}</small>
-            </span>
-          </a>
-        `,
-          )
-          .join("")}
+  projectsGrid.innerHTML = items
+    .map(
+      (project, index) => `
+    <a class="project-card project-card-featured" href="${project.link || "#"}" target="_blank" rel="noreferrer">
+      <div class="project-card-image-wrap">
+        <img src="${project.image || "IMG/galeria-3d.svg"}" alt="Primera pantalla de ${project.title}" loading="lazy">
+        <span class="project-card-number">0${index + 1}</span>
       </div>
-      <button class="gallery-exit" type="button" aria-label="Salir de la galería" title="Salir de la galería">→</button>
-    </div>
-  `;
-
-  const scene = projectsGrid.querySelector(".project-scene");
-  const wheel = projectsGrid.querySelector(".project-wheel");
-  const cards = [...projectsGrid.querySelectorAll(".project-orbit-card")];
-  let targetRotation = 0;
-  let currentRotation = 0;
-  let activeIndex = 0;
-  let pointerStart = null;
-
-  const goTo = (direction) => {
-    activeIndex = (activeIndex + direction + items.length) % items.length;
-    targetRotation -= direction * step;
-  };
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-      event.preventDefault();
-      goTo(event.key === "ArrowRight" ? 1 : -1);
-    }
-  });
-
-  projectsGrid.querySelector(".gallery-exit").addEventListener("click", () => {
-    document.body.classList.add("horizontal-journey");
-    document
-      .getElementById("certificados")
-      .scrollIntoView({ behavior: "smooth" });
-  });
-  scene.addEventListener(
-    "wheel",
-    (event) => {
-      event.preventDefault();
-      goTo(event.deltaY > 0 ? 1 : -1);
-    },
-    { passive: false },
-  );
-  scene.addEventListener("pointerdown", (event) => {
-    pointerStart = event.clientX;
-    scene.setPointerCapture(event.pointerId);
-  });
-  scene.addEventListener("pointerup", (event) => {
-    if (pointerStart !== null && Math.abs(event.clientX - pointerStart) > 35) {
-      goTo(event.clientX < pointerStart ? 1 : -1);
-    }
-    pointerStart = null;
-  });
-
-  const animate = () => {
-    currentRotation += (targetRotation - currentRotation) * 0.075;
-    wheel.style.transform = `translate(-50%, -50%) rotateY(${currentRotation}deg)`;
-    cards.forEach((card, index) => {
-      const normalized = Math.abs(
-        (((index * step + currentRotation) % 360) + 360) % 360,
-      );
-      const distance = Math.min(normalized, 360 - normalized);
-      card.classList.toggle("active", distance < step / 2);
-    });
-    window.requestAnimationFrame(animate);
-  };
-  animate();
-}
-
-function setupJourneyLocks() {
-  const projectsSection = document.getElementById("proyectos");
-  const certificatesSection = document.getElementById("certificados");
-  const certificatesGridElement =
-    certificatesSection.querySelector(".certificates-grid");
-
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      const projectsBox = projectsSection.getBoundingClientRect();
-      const projectsArePinned =
-        projectsBox.top <= 1 && projectsBox.bottom >= window.innerHeight - 1;
-      const horizontalMode =
-        document.body.classList.contains("horizontal-journey");
-
-      if (!horizontalMode && projectsArePinned && event.deltaY > 0) {
-        event.preventDefault();
-        window.scrollTo({ top: window.scrollY, behavior: "auto" });
-        return;
-      }
-
-      if (!horizontalMode) return;
-
-      const certificatesBox = certificatesSection.getBoundingClientRect();
-      const certificatesArePinned =
-        certificatesBox.top <= 1 &&
-        certificatesBox.bottom >= window.innerHeight - 1;
-      if (!certificatesArePinned) return;
-
-      const atStart = certificatesGridElement.scrollLeft <= 0;
-      const atEnd =
-        certificatesGridElement.scrollLeft +
-          certificatesGridElement.clientWidth >=
-        certificatesGridElement.scrollWidth - 8;
-      event.preventDefault();
-      if (event.deltaY < 0 && atStart) return;
-      if (event.deltaY > 0 && atEnd) {
-        document.getElementById("redes").scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-      certificatesGridElement.scrollBy({
-        left: event.deltaY,
-        behavior: "auto",
-      });
-    },
-    { passive: false },
-  );
+      <div class="project-card-body">
+        <p class="section-label">Proyecto</p>
+        <h4>${project.title}</h4>
+        <p>${project.description}</p>
+        <div class="project-tags">${(project.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+        <span class="project-link">Abrir proyecto &rarr;</span>
+      </div>
+    </a>
+  `,
+    )
+    .join("");
 }
 
 function renderCertificates(certificates) {
@@ -272,49 +172,44 @@ function renderCertificates(certificates) {
     certificates && certificates.length
       ? certificates
       : fallbackData.certificates;
-
   certificatesGrid.innerHTML = items
     .map(
       (certificate) => `
-        <a class="certificate-card" href="${certificate.link || "#"}" target="_blank" rel="noreferrer">
-          <p class="section-label">Certificado</p>
-          <h4>${certificate.name}</h4>
-          <p>${certificate.issuer}</p>
-          <div class="cert-meta">${certificate.date}</div>
-          <span class="certificate-link">Abrir certificado &rarr;</span>
-        </a>
-      `,
+    <a class="certificate-card" href="${certificate.link || "#"}" target="_blank" rel="noreferrer">
+      <p class="section-label">Certificado</p>
+      <h4>${certificate.name}</h4>
+      <p>${certificate.issuer}</p>
+      <div class="cert-meta">${certificate.date}</div>
+      <span class="certificate-link">Abrir certificado &rarr;</span>
+    </a>
+  `,
     )
     .join("");
 }
 
 function renderSocials(socials) {
   const items = socials && socials.length ? socials : fallbackData.socials;
-
   socialsGrid.innerHTML = items
     .map(
       (social) => `
-        <a class="social-card" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.name}">
-          <div class="social-icon">${social.icon}</div>
-          <span>${social.name}</span>
-        </a>
-      `,
+    <a class="social-card" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.name}">
+      <div class="social-icon">${social.icon}</div><span>${social.name}</span>
+    </a>
+  `,
     )
     .join("");
 }
 
 async function loadData() {
   try {
-    const response = await fetch("data.json");
+    const response = await fetch(`data.json?rev=${Date.now()}`);
     if (!response.ok) throw new Error("No se pudo cargar data.json");
     const data = await response.json();
-
-    renderProfile(data.profile);
+    renderProfile(data.profile || fallbackData.profile);
     renderProjects(data.projects);
     renderCertificates(data.certificates);
     renderSocials(data.socials);
   } catch (error) {
-    console.warn("Usando datos por defecto:", error);
     renderProfile(fallbackData.profile);
     renderProjects(fallbackData.projects);
     renderCertificates(fallbackData.certificates);
@@ -322,8 +217,8 @@ async function loadData() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   yearEl.textContent = new Date().getFullYear();
+  initializeTheme();
   loadData();
-  setupJourneyLocks();
 });

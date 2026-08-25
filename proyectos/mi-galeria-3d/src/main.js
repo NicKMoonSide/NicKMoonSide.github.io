@@ -1,13 +1,11 @@
-import "./style.css";
-
 const app = document.querySelector("#app");
 const artworks = [
-  ["Pulse", "Digital heartbeat", "/images/pulse.svg"],
-  ["Orbit", "Soft geometry", "/images/orbit.svg"],
-  ["Frequency", "Moving signal", "/images/frequency.svg"],
-  ["Terrain", "Quiet topography", "/images/terrain.svg"],
-  ["Afterglow", "Light in motion", "/images/afterglow.svg"],
-  ["Monolith", "Solid state", "/images/monolith.svg"],
+  ["Pulse", "Digital heartbeat", "./public/images/pulse.svg"],
+  ["Orbit", "Soft geometry", "./public/images/orbit.svg"],
+  ["Frequency", "Moving signal", "./public/images/frequency.svg"],
+  ["Terrain", "Quiet topography", "./public/images/terrain.svg"],
+  ["Afterglow", "Light in motion", "./public/images/afterglow.svg"],
+  ["Monolith", "Solid state", "./public/images/monolith.svg"],
 ];
 
 app.innerHTML = `
