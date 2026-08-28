@@ -91,6 +91,39 @@ const yearEl = document.getElementById("year");
 const themeToggleButton = document.querySelector(".theme-toggle");
 const THEME_STORAGE_KEY = "portfolio-theme-preference";
 
+function initializeBackgroundMotion() {
+  const root = document.documentElement;
+  let pointerX = window.innerWidth * 0.5;
+  let pointerY = window.innerHeight * 0.5;
+
+  const updateMotion = () => {
+    const relativeX = (pointerX / window.innerWidth) * 100;
+    const relativeY = (pointerY / window.innerHeight) * 100;
+    const driftX = (pointerX - window.innerWidth / 2) * 0.18;
+    const driftY = (pointerY - window.innerHeight / 2) * 0.18;
+
+    root.style.setProperty("--pointer-x", `${relativeX}%`);
+    root.style.setProperty("--pointer-y", `${relativeY}%`);
+    root.style.setProperty("--drift-x", `${driftX}px`);
+    root.style.setProperty("--drift-y", `${driftY}px`);
+  };
+
+  window.addEventListener("pointermove", (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    updateMotion();
+  });
+
+  window.addEventListener("pointerleave", () => {
+    pointerX = window.innerWidth * 0.5;
+    pointerY = window.innerHeight * 0.5;
+    updateMotion();
+  });
+
+  window.addEventListener("resize", updateMotion);
+  updateMotion();
+}
+
 function applyTheme(theme, animate = false) {
   const normalizedTheme = theme === "light" ? "light" : "dark";
   document.documentElement.dataset.theme = normalizedTheme;
@@ -149,7 +182,7 @@ function renderProjects(projects) {
   projectsGrid.innerHTML = items
     .map(
       (project, index) => `
-    <a class="project-card project-card-featured" href="${project.link || "#"}" target="_blank" rel="noreferrer">
+    <a class="project-card project-card-featured" href="${project.link || "#"}" target="_blank" rel="noreferrer" data-preview-title="${escapeHtml(project.title)}" data-preview-description="${escapeHtml(project.description)}" data-preview-badge="Proyecto">
       <div class="project-card-image-wrap">
         <img src="${project.image || "IMG/galeria-3d.svg"}" alt="Primera pantalla de ${project.title}" loading="lazy">
         <span class="project-card-number">0${index + 1}</span>
@@ -175,7 +208,7 @@ function renderCertificates(certificates) {
   certificatesGrid.innerHTML = items
     .map(
       (certificate) => `
-    <a class="certificate-card" href="${certificate.link || "#"}" target="_blank" rel="noreferrer">
+    <a class="certificate-card" href="${certificate.link || "#"}" target="_blank" rel="noreferrer" data-preview-title="${escapeHtml(certificate.name)}" data-preview-description="${escapeHtml(certificate.issuer)}" data-preview-badge="Certificado">
       <p class="section-label">Certificado</p>
       <h4>${certificate.name}</h4>
       <p>${certificate.issuer}</p>
@@ -200,6 +233,101 @@ function renderSocials(socials) {
     .join("");
 }
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function initializeHoverPreviews() {
+  const preview = document.getElementById("mini-preview-panel");
+  if (preview) {
+    preview.remove();
+  }
+
+  const panel = document.createElement("div");
+  panel.id = "mini-preview-panel";
+  panel.className = "mini-preview-panel";
+  panel.innerHTML = `
+    <button class="mini-preview-close" type="button" aria-label="Cerrar vista previa">×</button>
+    <div class="mini-preview-badge"></div>
+    <h4></h4>
+    <p></p>
+  `;
+  document.body.appendChild(panel);
+
+  const closeButton = panel.querySelector(".mini-preview-close");
+  closeButton.addEventListener("click", () => {
+    panel.classList.remove("is-visible");
+  });
+
+  const cards = document.querySelectorAll(".project-card, .certificate-card");
+
+  cards.forEach((card) => {
+    const showPreview = () => {
+      const title =
+        card.dataset.previewTitle ||
+        card.querySelector("h4")?.textContent ||
+        "Detalle";
+      const desc =
+        card.dataset.previewDescription ||
+        card.querySelector("p")?.textContent ||
+        "";
+      const badge =
+        card.dataset.previewBadge ||
+        card.querySelector(".section-label")?.textContent ||
+        "";
+
+      panel.querySelector(".mini-preview-badge").textContent = badge;
+      panel.querySelector("h4").textContent = title;
+      panel.querySelector("p").textContent = desc;
+
+      const rect = card.getBoundingClientRect();
+      const panelWidth = 240;
+      const left = Math.min(
+        window.innerWidth - panelWidth - 18,
+        rect.left + rect.width / 2 - panelWidth / 2,
+      );
+      const top = Math.max(16, rect.top - 10);
+
+      panel.style.left = `${left}px`;
+      panel.style.top = `${top}px`;
+      panel.classList.add("is-visible");
+    };
+
+    const hidePreview = (event) => {
+      const nextTarget = event && event.relatedTarget;
+      if (
+        nextTarget &&
+        nextTarget.closest &&
+        nextTarget.closest(".mini-preview-panel")
+      ) {
+        return;
+      }
+      panel.classList.remove("is-visible");
+    };
+
+    card.addEventListener("pointerenter", showPreview);
+    card.addEventListener("pointerleave", hidePreview);
+  });
+
+  panel.addEventListener("pointerleave", () => {
+    panel.classList.remove("is-visible");
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const clickedInside =
+      event.target.closest(".mini-preview-panel") ||
+      event.target.closest(".project-card, .certificate-card");
+    if (!clickedInside) {
+      panel.classList.remove("is-visible");
+    }
+  });
+}
+
 async function loadData() {
   try {
     const response = await fetch(`data.json?rev=${Date.now()}`);
@@ -215,10 +343,13 @@ async function loadData() {
     renderCertificates(fallbackData.certificates);
     renderSocials(fallbackData.socials);
   }
+
+  initializeHoverPreviews();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   yearEl.textContent = new Date().getFullYear();
   initializeTheme();
+  initializeBackgroundMotion();
   loadData();
 });
