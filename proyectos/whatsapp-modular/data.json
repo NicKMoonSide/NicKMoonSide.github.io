@@ -1,0 +1,91 @@
+{
+  "statuses": [
+    { "name": "Tú", "avatar": "T", "highlight": true },
+    { "name": "Maya", "avatar": "M", "highlight": false },
+    { "name": "Luca", "avatar": "L", "highlight": false },
+    { "name": "Dani", "avatar": "D", "highlight": false },
+    { "name": "Vale", "avatar": "V", "highlight": false }
+  ],
+  "chats": [
+    {
+      "name": "Ana García",
+      "time": "09:12",
+      "preview": "¡Listo! Ya te mando la propuesta final para revisarla.",
+      "unread": 2,
+      "status": "sent",
+      "avatar": "AG",
+      "favorite": true,
+      "group": false
+    },
+    {
+      "name": "Mateo Ruiz",
+      "time": "08:40",
+      "preview": "Nos vemos hoy a las 18:00 en la reunión del proyecto.",
+      "unread": 0,
+      "status": "delivered",
+      "avatar": "MR",
+      "favorite": false,
+      "group": false
+    },
+    {
+      "name": "Equipo diseño",
+      "time": "Ayer",
+      "preview": "Sofía: revisé el mockup y quedó más limpio que antes.",
+      "unread": 5,
+      "status": "read",
+      "avatar": "ED",
+      "favorite": true,
+      "group": true
+    },
+    {
+      "name": "Laura M.",
+      "time": "Ayer",
+      "preview": "Gracias por compartir el concepto. Lo entendí perfectamente.",
+      "unread": 0,
+      "status": "read",
+      "avatar": "LM",
+      "favorite": true,
+      "group": false
+    },
+    {
+      "name": "César",
+      "time": "Lun",
+      "preview": "Cuando puedas, quiero que veas los cambios del landing.",
+      "unread": 1,
+      "status": "sent",
+      "avatar": "C",
+      "favorite": false,
+      "group": false
+    },
+    {
+      "name": "Patricia",
+      "time": "Dom",
+      "preview": "¿Te sirve si te lo envio esta tarde?",
+      "unread": 0,
+      "status": "delivered",
+      "avatar": "P",
+      "favorite": false,
+      "group": false
+    },
+    {
+      "name": "Pablo & Co.",
+      "time": "Dom",
+      "preview": "Tienen la nueva iteración del prototipo listo.",
+      "unread": 3,
+      "status": "read",
+      "avatar": "PC",
+      "favorite": true,
+      "group": true
+    },
+    {
+      "name": "Nora",
+      "time": "Sab",
+      "preview": "En cuanto llegue reviso el archivo y te respondo.",
+      "unread": 0,
+      "status": "sent",
+      "avatar": "N",
+      "favorite": false,
+      "group": false
+    }
+  ]
+}

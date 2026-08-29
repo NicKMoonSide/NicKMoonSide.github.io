@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp modular</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="phone-shell">
+      <div class="whatsapp-app" id="whatsappApp">
+        <header class="app-header">
+          <div class="status-strip" id="statusList" aria-label="Estados"></div>
+          <div class="toolbar" aria-label="Acciones de WhatsApp">
+            <button class="icon-button" type="button" aria-label="Nuevo chat">
+              <span>✎</span>
+            </button>
+            <button class="icon-button" type="button" aria-label="Buscar">
+              <span>⌕</span>
+            </button>
+            <button class="icon-button module-toggle" id="moduleToggle" type="button" aria-label="Cambiar a vista modular" aria-pressed="false">
+              <span class="module-grid" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+              </span>
+            </button>
+          </div>
+        </header>
+
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input type="search" placeholder="Buscar o empezar un chat" aria-label="Buscar chat" />
+        </div>
+
+        <nav class="chat-tabs" aria-label="Filtros de conversación">
+          <button class="tab is-active" type="button">Todos</button>
+          <button class="tab" type="button">No leídos</button>
+          <button class="tab" type="button">Favoritos</button>
+          <button class="tab" type="button">Grupos</button>
+        </nav>
+
+        <main class="chat-list" id="chatList" aria-live="polite"></main>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
