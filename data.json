@@ -32,6 +32,13 @@
       "tags": ["Three.js", "WebGL", "Interacción"],
       "link": "proyectos/mi-galeria-3d/index.html",
       "image": "IMG/galeria-3d.svg"
+    },
+    {
+      "title": "WhatsApp modular",
+      "description": "Clon visual de WhatsApp con una vista compacta tipo perfiles y diseño mobile-first.",
+      "tags": ["HTML", "CSS", "JavaScript", "UI/UX"],
+      "link": "proyectos/whatsapp-modular/index.html",
+      "image": "IMG/whatsapp.svg"
     }
   ],
   "certificates": [
